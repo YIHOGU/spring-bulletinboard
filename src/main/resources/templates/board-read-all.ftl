@@ -3,7 +3,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8"/>
-    <title>전체조회</title>
+    <title>단건조회</title>
     <#include "css/board_basic.css">
 </head>
 <body>
