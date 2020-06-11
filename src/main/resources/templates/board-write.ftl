@@ -20,7 +20,9 @@
             <td colspan="2"><input type="submit" value="WRITE!!"></td>
         </tr>
     </table>
-
+</form>
+<form action="/board/back">
+    <button>back</button>
 </form>
 
 </body>
