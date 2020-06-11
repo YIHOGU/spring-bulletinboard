@@ -9,6 +9,6 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create  # create: 정의된 엔티티 데이터베이스 추가, update: 변경점만 반영, create-drop: 데이터베이스 반영 후 애플리케이션 종료 시 삭제, validate: 동일 여부 확인, none: 아무것도 하지 않음
+      ddl-auto: update  # create: 정의된 엔티티 데이터베이스 추가, update: 변경점만 반영, create-drop: 데이터베이스 반영 후 애플리케이션 종료 시 삭제, validate: 동일 여부 확인, none: 아무것도 하지 않음
     open-in-view: false # View layer 에서 JPA 영속성 관련 세션 연결을 허용하지 않는다.
     generate-ddl: true  # DDL 생성
