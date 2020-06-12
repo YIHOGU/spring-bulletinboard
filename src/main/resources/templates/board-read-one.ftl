@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>단건조회</title>
+    <#include "css/post_basic.css">
 </head>
 <body>
 <!--나중에 assign 써서 로그인 상태 확인 후 해당 버튼 등장하게 수정-->
@@ -19,23 +20,23 @@
     <caption>BOARD</caption>
 
     <tr>
-        <th>number</th>
-        <td>${board.boardId}</td>
+        <th id="boardid">number</th>
+        <td id="boardid2">${board.boardId}</td>
         <!--작성자가 NULL이면 에러나서 임시 조치 - session 처리시 삭제 -->
-        <th>writer</th>
-        <td>${board.name?default("-NO_NAME-")}</td>
-        <th>date</th>
-        <td>${board.wrote_at}</td>
+        <th id="writer">writer</th>
+        <td id="writer2">${board.name?default("-NO_NAME-")}</td>
+        <th id="date">date</th>
+        <td id="date2">${board.wrote_at}</td>
     </tr>
 
     <tr>
-        <th>title</th>
-        <td colspan="5">${board.title}</td>
+        <th id="title">title</th>
+        <td colspan="5" id="title2">${board.title}</td>
     </tr>
 
     <tr>
-        <th>content</th>
-        <td colspan="5">${board.content}</td>
+        <th id="content">content</th>
+        <td colspan="5" id="content2">${board.content}</td>
     </tr>
 </table>
 
