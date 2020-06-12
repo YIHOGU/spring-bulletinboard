@@ -25,7 +25,7 @@
         <th id="date">DATE</th>
     </tr>
 
-    <#list boardPaging as row>
+    <#list boardPaging.iterator() as row>
         <tr>
             <td>${row.boardId}</td>
             <td>

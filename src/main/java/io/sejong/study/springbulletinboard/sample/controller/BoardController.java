@@ -85,6 +85,6 @@ public class BoardController {
     @RequestMapping("/board/back")
     public String backBoardAll(Model model) {
 
-        return "redirect:/board/board-all";
+        return "redirect:/board";
     }
 }
