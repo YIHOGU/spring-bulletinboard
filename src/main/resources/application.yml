@@ -1,5 +1,9 @@
 server:
   port: 8080  # 8080번 포트로 애플리케이션 실행
+  servlet:
+    encoding:
+      charset: UTF-8
+      force-response: true
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

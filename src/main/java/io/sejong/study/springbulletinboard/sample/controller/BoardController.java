@@ -70,9 +70,6 @@ public class BoardController {
     public String writeBoard(Model model, @ModelAttribute BoardCreateRequest request) {
         Board board = boardService.createBoard(request);
         model.addAttribute("board_id", board.getBoardId());
-//    model.addAttribute("title",board.getBoardId());
-//    model.addAttribute("content",board.getBoardId());
-//    model.addAttribute("wrote_at",board.getWrote_at());
 
         return "redirect:/board/board-one";
     }

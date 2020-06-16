@@ -19,10 +19,11 @@
 <table border="1">
     <caption>BOARD</caption>
     <tr>
-        <th id="boardid">BOARDID</th>
-        <th id="title">TITLE</th>
-        <th id="writer">WRITER</th>
-        <th id="date">DATE</th>
+        <th id="boardid">글번호</th>
+        <th id="title">제목</th>
+        <th id="writer">작성자</th>
+        <th id="date">날짜</th>
+        <th id="modify">수정</th>
     </tr>
 
     <#list boardPaging.iterator() as row>
