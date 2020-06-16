@@ -10,6 +10,7 @@ import io.sejong.study.springbulletinboard.sample.repository.SampleRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public class BoardService {
 
   public Page<Board> getBoardList(Pageable pageable) {
     int page = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1);
-    pageable = PageRequest.of(page, 5);
+    pageable = PageRequest.of(page, 5, Sort.by("boardId").descending());
 
     return boardRepository.findAll(pageable);
   }

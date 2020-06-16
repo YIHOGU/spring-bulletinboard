@@ -19,40 +19,41 @@
 <table border="1">
     <caption>BOARD</caption>
     <tr>
-        <th id="boardid">BOARDID</th>
-        <th id="title">TITLE</th>
-        <th id="writer">WRITER</th>
-        <th id="date">DATE</th>
+        <th id="boardid">글번호</th>
+        <th id="title">제목</th>
+        <th id="writer">작성자</th>
+        <th id="date">날짜</th>
+        <th id="modify">수정</th>
     </tr>
 
-
-    <#list boardList as row>
-    <tr>
-        <td>${row.boardId} ~~~ ${row_index}</td>
-        <td>
-            <a href="http://localhost:8080/board/board-one?board_id=${row.boardId}">${row.title}</a>
-        </td>
-        <!--작성자가 NULL이면 에러나서 임시 조치 - session 처리시 삭제 -->
-                <td>${row.name?default("-NO_NAME-")}</td>
-                <td>${row.wrote_at}</td>
-            </tr>
-        </#list>
-
+    <#list boardPaging.iterator() as row>
+        <tr>
+            <td>${row.boardId}</td>
+            <td>
+                <a href="http://localhost:8080/board/board-one?board_id=${row.boardId}">
+                    ${row.title}
+                </a>
+            </td>
+            <!--작성자가 NULL이면 에러나서 임시 조치 - session 처리시 삭제 -->
+            <td>${row.name?default("-NO_NAME-")}</td>
+            <td>${row.wrote_at}</td>
+        </tr>
+    </#list>
 </table>
 
 <!-- 나중에 로그인이 되어있어야만 글쓰게 하기-->
-        <#assign writeAction="/board/goToWrite">
-        <#assign pagingbefore="/board/before">
-        <#assign pagingnext="/board/next">
-        <form method="POST" action="${writeAction}">
-            <button>write</button>
-        </form>
-        <form method="POST" action="${pagingnext}" class="paging_button">
-            <button>next</button>
-        </form>
-        <form method="POST" action="${pagingbefore}" class="paging_button">
-            <button>before</button>
-        </form>
-        <footer>한글테스트</footer>
+<#assign writeAction="/board/goToWrite">
+<#assign pagingbefore="/board/before">
+<#assign pagingnext="/board/next">
+<form method="POST" action="${writeAction}">
+    <button>write</button>
+</form>
+<form method="POST" action="${pagingnext}" class="paging_button">
+    <button>next</button>
+</form>
+<form method="POST" action="${pagingbefore}" class="paging_button">
+    <button>before</button>
+</form>
+<footer>한글테스트</footer>
 </body>
 </html>
