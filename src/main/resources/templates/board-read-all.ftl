@@ -23,7 +23,6 @@
         <th id="title">제목</th>
         <th id="writer">작성자</th>
         <th id="date">날짜</th>
-        <th id="modify">수정</th>
     </tr>
 
     <#list boardPaging.iterator() as row>
@@ -42,17 +41,17 @@
 </table>
 
 <!-- 나중에 로그인이 되어있어야만 글쓰게 하기-->
-<#assign writeAction="/board/goToWrite">
+<#assign writeAction="/board/write?type=CREATE">
 <#assign pagingbefore="/board/before">
 <#assign pagingnext="/board/next">
 <form method="POST" action="${writeAction}">
-    <button>write</button>
+    <button  class="actionButton">글쓰기</button>
 </form>
-<form method="POST" action="${pagingnext}" class="paging_button">
-    <button>next</button>
+<form method="POST" action="${pagingnext}">
+    <button class="actionButton">다음페이지</button>
 </form>
-<form method="POST" action="${pagingbefore}" class="paging_button">
-    <button>before</button>
+<form method="POST" action="${pagingbefore}">
+    <button class="actionButton">이전페이지</button>
 </form>
 <footer>한글테스트</footer>
 </body>

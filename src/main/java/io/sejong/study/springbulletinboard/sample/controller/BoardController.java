@@ -3,6 +3,7 @@ package io.sejong.study.springbulletinboard.sample.controller;
 import io.sejong.study.springbulletinboard.sample.entity.Board;
 import io.sejong.study.springbulletinboard.sample.entity.Sample;
 import io.sejong.study.springbulletinboard.sample.http.req.BoardCreateRequest;
+import io.sejong.study.springbulletinboard.sample.http.req.BoardUpdateRequest;
 import io.sejong.study.springbulletinboard.sample.http.req.SampleCreateRequest;
 import io.sejong.study.springbulletinboard.sample.http.req.SampleUpdateRequest;
 import io.sejong.study.springbulletinboard.sample.model.Type;
@@ -49,7 +50,6 @@ public class BoardController {
     public String getBoardPaging(Model model, Pageable pageable) {
         Page<Board> boardPaging = boardService.getBoardList(pageable);
         model.addAttribute("boardPaging", boardPaging);
-//    PageRequest request = new PageRequest(pNo - 1, 5, Sort.unsorted());
 
         return "board-read-all";
     }
@@ -66,7 +66,21 @@ public class BoardController {
         return "board-read-one";
     }
 
+    // write인지 update인지 확인
     @RequestMapping("/board/write")
+    public String controlBoard(Model model, @RequestParam Type type, @RequestParam(value="board_id", required=false) Long boardId) {
+        Board board;
+        if(type == Type.UPDATE) {
+            board = boardService.getOneByBoardId(boardId);
+            model.addAttribute("board",board);
+        }
+        model.addAttribute("type",type);
+
+        return "board-write";
+    }
+
+    //Write Controller
+    @RequestMapping("/write")
     public String writeBoard(Model model, @ModelAttribute BoardCreateRequest request) {
         Board board = boardService.createBoard(request);
         model.addAttribute("board_id", board.getBoardId());
@@ -74,14 +88,25 @@ public class BoardController {
         return "redirect:/board/board-one";
     }
 
-    @RequestMapping("/board/goToWrite")
-    public String goToWrite(Model model) {
-        return "board-write";
+    //Update Controller
+    @PostMapping("/update")
+    public String updateBoard(Model model, @ModelAttribute BoardUpdateRequest request, @RequestParam(value="board_id", required=false) Long boardId) {
+        Board board = boardService.updateBoard(request);
+        model.addAttribute("board_id",board.getBoardId());
+
+        return "redirect:/board/board-one";
+    }
+
+    //Delete Controller
+    @RequestMapping("/delete")
+    public String deleteBoard(@RequestParam("board_id") Long boardId) {
+        boardService.deleteBoard(boardId);
+
+        return "redirect:/board";
     }
 
     @RequestMapping("/board/back")
     public String backBoardAll(Model model) {
-
         return "redirect:/board";
     }
 }

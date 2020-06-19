@@ -2,9 +2,8 @@
 th{font-size : xx-large;text-align: center;}
 td{text-align: center;}
 #boardid{width : 10%;}
-#title{width : 40%;}
+#title{width : 50%;}
 #writer{width : 20%;}
-#date{width : 20%;}
-#modify{width : 10%;}
-.paging_button{display: inline; float: right;}
+#date{width : 20%;
+.actionButton{display: inline-block;}
 </style>
