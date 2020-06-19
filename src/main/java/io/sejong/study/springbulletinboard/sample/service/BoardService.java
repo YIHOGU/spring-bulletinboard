@@ -3,6 +3,7 @@ package io.sejong.study.springbulletinboard.sample.service;
 import io.sejong.study.springbulletinboard.sample.entity.Board;
 import io.sejong.study.springbulletinboard.sample.entity.Sample;
 import io.sejong.study.springbulletinboard.sample.http.req.BoardCreateRequest;
+import io.sejong.study.springbulletinboard.sample.http.req.BoardUpdateRequest;
 import io.sejong.study.springbulletinboard.sample.http.req.SampleCreateRequest;
 import io.sejong.study.springbulletinboard.sample.http.req.SampleUpdateRequest;
 import io.sejong.study.springbulletinboard.sample.repository.BoardRepository;
@@ -48,20 +49,16 @@ public class BoardService {
     return boardRepository.findAll(pageable);
   }
 
-  /*
-  public Board updateSample(SampleUpdateRequest request) {
-    Board board = sampleRepository.findBySampleId(request.getSampleId());
-    board.setNumber(request.getNumber());
-    board.setName(request.getName());
+  public Board updateBoard(BoardUpdateRequest request) {
+    Board board = boardRepository.findByBoardId(request.getBoardId());
     board.setContent(request.getContent());
     board.setTitle(request.getTitle());
-    board.setWrote_at(request.getWrote_at());
+    board.setUpdated_at(request.getUpdated_at());
 
     return boardRepository.save(board);
   }
-  */
 
-  public void deleteSample(Long boardId) {
+  public void deleteBoard(Long boardId) {
     boardRepository.deleteById(boardId);
   }
 }

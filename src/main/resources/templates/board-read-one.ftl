@@ -20,28 +20,32 @@
     <caption>BOARD</caption>
 
     <tr>
-        <th id="boardid">number</th>
+        <th id="boardid">글번호</th>
         <td id="boardid2">${board.boardId}</td>
         <!--작성자가 NULL이면 에러나서 임시 조치 - session 처리시 삭제 -->
-        <th id="writer">writer</th>
+        <th id="writer">작성자</th>
         <td id="writer2">${board.name?default("-NO_NAME-")}</td>
-        <th id="date">date</th>
+        <th id="date">날짜</th>
         <td id="date2">${board.wrote_at}</td>
     </tr>
 
     <tr>
-        <th id="title">title</th>
+        <th id="title">제목</th>
         <td colspan="5" id="title2">${board.title}</td>
     </tr>
 
     <tr>
-        <th id="content">content</th>
+        <th id="content">내용</th>
         <td colspan="5" id="content2">${board.content}</td>
     </tr>
 </table>
 
-<form action="/board/back">
-    <button>back</button>
+<form action="/board/back" class="actionButton">
+    <button>뒤로</button>
+</form>
+<#assign updateAction="/board/write?type=UPDATE&board_id=${board.boardId}">
+<form method="POST" action="${updateAction}" class="actionButton">
+    <button>수정 및 삭제</button>
 </form>
 </body>
 </html>

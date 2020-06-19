@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/bulletinboard?serverTimezone=Asia/Seoul # 데이터베이스 이름 bulletinboard
     username: root  # mysql username로 변경
-    password: ghwlsdl0  # mysql password로 변경
+    password: ghwlsdl0!!@@$$ # mysql password로 변경
   jpa:
     show-sql: true
     hibernate:
