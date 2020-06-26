@@ -29,9 +29,10 @@ public class Reply {
     @Column(nullable = false)
     private String wrote_at;
 
-    public Reply(Long replyId, User user, String replyContent, String wrote_at) {
+    public Reply(Long replyId, User user, Long boardId, String replyContent, String wrote_at) {
         this.replyId = replyId;
         this.user = user;
+        this.boardId = boardId;
         this.replyContent = replyContent;
         this.wrote_at = wrote_at;
     }

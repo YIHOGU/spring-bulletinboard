@@ -31,34 +31,40 @@
 
     <tr>
         <th id="title">제목</th>
-        <td colspan="5" id="title2">${board.title}</td>
+        <td colspan="5" id="title22">${board.title}</td>
     </tr>
 
     <tr>
         <th id="content">내용</th>
         <td colspan="5" id="content2">${board.content}</td>
     </tr>
-    <tr>
-        <td>세션 본인 아이디</td>
-        <td colspan="4">
-            <form>
-                <input type="text" name="reply">
-            </form>
-        </td>
-        <td>
-            <form>
+    <form method="POST" action="/reply/write">
+        <tr>
+            <td>세션 본인 아이디 - ${board.boardId}</td>
+            <td colspan="4">
+
+                <input type="hidden" name="boardId" value="${board.boardId}">
+                <input type="text" name="replyContent">
+            </td>
+            <td>
                 <button>댓글 입력</button>
-            </form>
-        </td>
-    </tr>
+            </td>
+        </tr>
+    </form>
     <tr>
         <th id="reply" colspan="6">댓글</th>
     </tr>
-    <tr>
-        <td>작성자</td>
-        <td colspan="4">댓글내용~~</td>
-        <td>삭제버튼</td>
-    </tr>
+    <#list replyList as row>
+        <tr>
+            <td>${row.user_id?default("-NO_NAME-")}</td>
+            <td colspan="4">${row.replyContent}</td>
+            <td>
+                <form>
+                    <button>삭제</button>
+                </form>
+            </td>
+        </tr>
+    </#list>
 
 </table>
 
