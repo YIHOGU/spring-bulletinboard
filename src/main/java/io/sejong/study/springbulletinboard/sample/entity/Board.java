@@ -1,6 +1,7 @@
 package io.sejong.study.springbulletinboard.sample.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import javax.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -16,8 +17,12 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long boardId; //private Long boardId
 
+    @OneToMany
+    @JoinColumn(name = "boardId")
+    private List<Reply> replies;
+
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User user;
 
     private String content;
@@ -29,9 +34,9 @@ public class Board {
 
     private String updated_at;
 
-    public Board(Long boardId, String content, String title, String wrote_at) {
+    public Board(Long boardId, User user, String content, String title, String wrote_at) {
         this.boardId = boardId;
-        //this.user_id = user_id;
+        this.user = user;
         this.content = content;
         this.title = title;
         this.wrote_at = wrote_at;

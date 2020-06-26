@@ -18,18 +18,21 @@ public class Reply {
     public Long replyId; //private Long boardId
 
     private String replyContent;
-    private String replyname;
-    private Long rtob;
+
+    private Long boardId;
+
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 
     //@WriteTimestamp
     @Column(nullable = false)
     private String wrote_at;
 
-    public Reply(Long replyId, String replyContent, String replyname, Long rtob, String wrote_at) {
+    public Reply(Long replyId, User user, String replyContent, String wrote_at) {
         this.replyId = replyId;
+        this.user = user;
         this.replyContent = replyContent;
-        this.replyname = replyname;
-        this.rtob = rtob;
         this.wrote_at = wrote_at;
     }
 }

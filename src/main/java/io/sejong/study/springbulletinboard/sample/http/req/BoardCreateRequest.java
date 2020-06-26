@@ -16,7 +16,7 @@ public class BoardCreateRequest {
   Date time = new Date();
 
   private Long boardId;
-  //private User user_id;
+  private User user;
   private String content;
   private String title;
   private String wrote_at = format.format(time);

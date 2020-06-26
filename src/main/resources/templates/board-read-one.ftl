@@ -38,6 +38,28 @@
         <th id="content">내용</th>
         <td colspan="5" id="content2">${board.content}</td>
     </tr>
+    <tr>
+        <td>세션 본인 아이디</td>
+        <td colspan="4">
+            <form>
+                <input type="text" name="reply">
+            </form>
+        </td>
+        <td>
+            <form>
+                <button>댓글 입력</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <th id="reply" colspan="6">댓글</th>
+    </tr>
+    <tr>
+        <td>작성자</td>
+        <td colspan="4">댓글내용~~</td>
+        <td>삭제버튼</td>
+    </tr>
+
 </table>
 
 <form action="/board/back" class="actionButton">

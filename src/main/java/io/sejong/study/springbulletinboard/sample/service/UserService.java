@@ -1,9 +1,7 @@
 package io.sejong.study.springbulletinboard.sample.service;
 
 import io.sejong.study.springbulletinboard.sample.entity.User;
-import io.sejong.study.springbulletinboard.sample.http.req.BoardCreateRequest;
 import io.sejong.study.springbulletinboard.sample.http.req.UserCreateRequest;
-import io.sejong.study.springbulletinboard.sample.repository.BoardRepository;
 import io.sejong.study.springbulletinboard.sample.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +22,13 @@ public class UserService {
   }
 
   public User getOneByuid(Long uid) {
-    return userRepository.findByuid(uid);
+    return userRepository.findByUserId(uid);
   }
 
   public User createUser(UserCreateRequest request) {
     User user =
             new User(
-                    request.getUid(), request.getName(),request.getPassword(),request.getCreated_at());
+                    request.getUserId(), request.getName(),request.getPassword(),request.getCreated_at());
 
     return userRepository.save(user);
   }

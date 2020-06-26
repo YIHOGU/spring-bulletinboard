@@ -16,20 +16,21 @@ import static java.time.LocalDateTime.now;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long uid;
+    private Long userId;
 
     private String name;
-
+/*
     @OneToMany(mappedBy = "user")
-    private List<Board> boardList = new ArrayList<>();
+    private List<Board> boards;
+*/
 
     private String password;
 
     @Column(nullable = false)
     private String created_at;
 
-    public User(Long uid, String name, String password, String created_at) {
-        this.uid = uid;
+    public User(Long userId, String name, String password, String created_at) {
+        this.userId = userId;
         this.name = name;
         this.password = password;
         this.created_at = created_at;

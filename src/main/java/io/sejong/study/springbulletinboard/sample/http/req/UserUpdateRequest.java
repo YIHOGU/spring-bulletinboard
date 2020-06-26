@@ -8,9 +8,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class UserUpdateRequest {
-  private Long uid;
+  private Long userId;
   private String name;
-  private String userId;
   private String password;
   private String created_at;
 }

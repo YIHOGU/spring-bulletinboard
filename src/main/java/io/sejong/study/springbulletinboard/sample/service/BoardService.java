@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -37,11 +38,12 @@ public class BoardService {
   public Board createBoard(BoardCreateRequest request) {
     Board board =
         new Board(
-            request.getBoardId(), request.getContent(),request.getTitle(),request.getWrote_at());
+            request.getBoardId(),request.getUser(), request.getContent(),request.getTitle(),request.getWrote_at());
 
     return boardRepository.save(board);
   }
 
+//  @Transactional 영속성
   public Page<Board> getBoardList(Pageable pageable) {
     int page = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1);
     pageable = PageRequest.of(page, 5, Sort.by("boardId").descending());
