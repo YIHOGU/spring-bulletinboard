@@ -23,11 +23,11 @@
         </table>
     </form>
     <#else>
-        <form method="post" action="/update?board_id=${board.boardId}">
+        <form method="post" action="/update">
             <table>
                 <caption>수정하기</caption>
                 <tr>
-                    <td>제목</td>
+                    <td>제목<input type="hidden" name="boardId" value="${board.boardId}"</td>
                     <td><input type="text" name="title" value="${board.title}"></td>
                 </tr>
                 <tr>
