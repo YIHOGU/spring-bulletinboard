@@ -4,6 +4,6 @@ td{text-align: center;}
 #boardid{width : 10%;}
 #title{width : 50%;}
 #writer{width : 20%;}
-#date{width : 20%;
-.actionButton{display: inline-block;}
+#date{width : 20%;}
+.pagingbutton{display: inline-block; float: right;}
 </style>
