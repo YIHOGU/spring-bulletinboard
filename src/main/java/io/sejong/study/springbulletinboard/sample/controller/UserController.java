@@ -39,7 +39,7 @@ public class UserController {
   @RequestMapping("/sign/create")
   public String signUp(Model model, @ModelAttribute UserCreateRequest request) {
     User user = userService.createUser(request);
-    model.addAttribute("uid",user.getUid());
+    model.addAttribute("userId",user.getUserId());
 //        model.addAttribute("name",user.getName());
 //        model.addAttribute("userId",user.getUserId());
 //        model.addAttribute("password",user.getPassword());

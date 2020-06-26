@@ -34,7 +34,7 @@
                 </a>
             </td>
             <!--작성자가 NULL이면 에러나서 임시 조치 - session 처리시 삭제 -->
-            <td>${row.name?default("-NO_NAME-")}</td>
+            <td>${row.user_id?default("-NO_NAME-")}</td>
             <td>${row.wrote_at}</td>
         </tr>
     </#list>
