@@ -1,6 +1,8 @@
 package io.sejong.study.springbulletinboard.sample.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 import lombok.*;
 
@@ -18,19 +20,17 @@ public class User {
 
     private String name;
 
-    private String userId;
+    @OneToMany(mappedBy = "user")
+    private List<Board> boardList = new ArrayList<>();
 
     private String password;
 
     @Column(nullable = false)
     private String created_at;
 
-    private String updated_at;
-
-    public User(Long uid, String name, String userId, String password, String created_at) {
+    public User(Long uid, String name, String password, String created_at) {
         this.uid = uid;
         this.name = name;
-        this.userId = userId;
         this.password = password;
         this.created_at = created_at;
     }

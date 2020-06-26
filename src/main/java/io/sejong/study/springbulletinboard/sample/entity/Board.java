@@ -10,13 +10,16 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Setter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long boardId; //private Long boardId
 
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     private String content;
     private String title;
 
@@ -26,9 +29,9 @@ public class Board {
 
     private String updated_at;
 
-    public Board(Long boardId, String name, String content, String title, String wrote_at) {
+    public Board(Long boardId, String content, String title, String wrote_at) {
         this.boardId = boardId;
-        this.name = name;
+        //this.user_id = user_id;
         this.content = content;
         this.title = title;
         this.wrote_at = wrote_at;

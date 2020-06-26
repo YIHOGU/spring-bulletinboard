@@ -37,7 +37,7 @@ public class BoardService {
   public Board createBoard(BoardCreateRequest request) {
     Board board =
         new Board(
-            request.getBoardId(),request.getName(),request.getContent(),request.getTitle(),request.getWrote_at());
+            request.getBoardId(), request.getContent(),request.getTitle(),request.getWrote_at());
 
     return boardRepository.save(board);
   }
