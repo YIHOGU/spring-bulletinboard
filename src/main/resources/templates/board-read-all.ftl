@@ -42,17 +42,24 @@
 
 <!-- 나중에 로그인이 되어있어야만 글쓰게 하기-->
 <#assign writeAction="/board/write?type=CREATE">
-<#assign pagingbefore="/board/before">
-<#assign pagingnext="/board/next">
+
 <form method="POST" action="${writeAction}">
-    <button  class="actionButton">글쓰기</button>
+    <button class="actionButton">글쓰기</button>
 </form>
-<form method="POST" action="${pagingnext}">
-    <button class="actionButton">다음페이지</button>
+
+<#--페이지 버튼-->
+<#if boardNext?then("true","false") == "true">
+    <form method="POST" action="/board?page=${boardNextNum}" class="pagingbutton">
+        <button>다음</button>
+    </form>
+</#if>
+
+<#if boardPre?then("true","false") == "true">
+<form method="POST" action="/board?page=${boardPreNum}" class="pagingbutton">
+    <button>이전</button>
 </form>
-<form method="POST" action="${pagingbefore}">
-    <button class="actionButton">이전페이지</button>
-</form>
-<footer>한글테스트</footer>
+</#if>
+
+<footer>${boardNextNum}</footer>
 </body>
 </html>

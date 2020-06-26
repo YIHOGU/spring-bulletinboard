@@ -50,6 +50,11 @@ public class BoardController {
     public String getBoardPaging(Model model, Pageable pageable) {
         Page<Board> boardPaging = boardService.getBoardList(pageable);
         model.addAttribute("boardPaging", boardPaging);
+        model.addAttribute("boardNext",boardPaging.hasNext());
+        model.addAttribute("boardPre",boardPaging.hasPrevious());
+        model.addAttribute("boardNextNum",boardPaging.getNumber()+2);
+        model.addAttribute("boardPreNum",boardPaging.getNumber());
+        model.addAttribute("boardTotal",boardPaging.getTotalPages());
 
         return "board-read-all";
     }
