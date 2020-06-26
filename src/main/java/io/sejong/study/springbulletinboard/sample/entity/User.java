@@ -1,12 +1,10 @@
 package io.sejong.study.springbulletinboard.sample.entity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import static java.time.LocalDateTime.now;
+import javax.persistence.*;
 
 @Getter
 @Setter

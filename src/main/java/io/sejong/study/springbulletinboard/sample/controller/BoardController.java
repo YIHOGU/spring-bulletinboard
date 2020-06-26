@@ -89,8 +89,8 @@ public class BoardController {
     }
 
     //Update Controller
-    @PostMapping("/update")
-    public String updateBoard(Model model, @ModelAttribute BoardUpdateRequest request, @RequestParam(value="board_id", required=false) Long boardId) {
+    @RequestMapping("/update")
+    public String updateBoard(Model model, @ModelAttribute BoardUpdateRequest request) {
         Board board = boardService.updateBoard(request);
         model.addAttribute("board_id",board.getBoardId());
 
