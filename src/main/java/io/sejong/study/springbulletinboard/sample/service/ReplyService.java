@@ -28,11 +28,10 @@ public class ReplyService {
   public List<Reply> getAll() {
     return replyRepository.findAll();
   }
-/*
+
   public Reply getOneByBoardId(Long replyId) {
-    return replyRepository.findByreplyId(replyId);
+    return replyRepository.findByReplyId(replyId);
   }
-*/
 
   public Reply createReply(ReplyCreateRequest request) {
     Reply reply =

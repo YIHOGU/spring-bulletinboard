@@ -4,6 +4,7 @@ import io.sejong.study.springbulletinboard.sample.entity.Board;
 import io.sejong.study.springbulletinboard.sample.entity.Reply;
 import io.sejong.study.springbulletinboard.sample.http.req.BoardCreateRequest;
 import io.sejong.study.springbulletinboard.sample.http.req.BoardUpdateRequest;
+import io.sejong.study.springbulletinboard.sample.http.req.ReplyCreateRequest;
 import io.sejong.study.springbulletinboard.sample.model.Type;
 import io.sejong.study.springbulletinboard.sample.repository.BoardRepository;
 import io.sejong.study.springbulletinboard.sample.service.BoardService;
@@ -20,11 +21,12 @@ import java.util.List;
 public class BoardController {
 
     private final BoardService boardService;
+    private final ReplyService replyService;
     private BoardRepository boardRepository;
-    public ReplyService replyService;
 
-    public BoardController(BoardService boardService) {
+    public BoardController(BoardService boardService, ReplyService replyService) {
         this.boardService = boardService;
+        this.replyService = replyService;
     }
 
  /*   @RequestMapping("/board/board-all")
@@ -61,7 +63,6 @@ public class BoardController {
         List<Reply> replyList = replyService.getAll();
         model.addAttribute("replyList",replyList);
 
-        // sample-read-one.ftl 뷰를 반환한다.
         return "board-read-one";
     }
 

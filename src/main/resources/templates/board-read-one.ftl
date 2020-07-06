@@ -57,7 +57,7 @@
     <#list replyList as row>
         <tr>
             <td>${row.user_id?default("-NO_NAME-")}</td>
-            <td colspan="4">${row.replyContent}</td>
+            <td colspan="4">${row.replyContent}?d</td>
             <td>
                 <form>
                     <button>삭제</button>
