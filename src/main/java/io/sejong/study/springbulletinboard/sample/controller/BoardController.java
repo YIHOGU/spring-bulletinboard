@@ -1,39 +1,32 @@
 package io.sejong.study.springbulletinboard.sample.controller;
 
 import io.sejong.study.springbulletinboard.sample.entity.Board;
-import io.sejong.study.springbulletinboard.sample.entity.Sample;
+import io.sejong.study.springbulletinboard.sample.entity.Reply;
 import io.sejong.study.springbulletinboard.sample.http.req.BoardCreateRequest;
 import io.sejong.study.springbulletinboard.sample.http.req.BoardUpdateRequest;
-import io.sejong.study.springbulletinboard.sample.http.req.SampleCreateRequest;
-import io.sejong.study.springbulletinboard.sample.http.req.SampleUpdateRequest;
+import io.sejong.study.springbulletinboard.sample.http.req.ReplyCreateRequest;
 import io.sejong.study.springbulletinboard.sample.model.Type;
 import io.sejong.study.springbulletinboard.sample.repository.BoardRepository;
 import io.sejong.study.springbulletinboard.sample.service.BoardService;
-import io.sejong.study.springbulletinboard.sample.service.SampleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import io.sejong.study.springbulletinboard.sample.service.ReplyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.web.context.annotation.RequestScope;
 
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Controller
 public class BoardController {
 
     private final BoardService boardService;
+    private final ReplyService replyService;
     private BoardRepository boardRepository;
 
-    public BoardController(BoardService boardService) {
+    public BoardController(BoardService boardService, ReplyService replyService) {
         this.boardService = boardService;
+        this.replyService = replyService;
     }
 
  /*   @RequestMapping("/board/board-all")
@@ -67,7 +60,9 @@ public class BoardController {
         Board board = boardService.getOneByBoardId(boardId);
         model.addAttribute("board", board);
 
-        // sample-read-one.ftl 뷰를 반환한다.
+//        List<Reply> replyList = replyService.getAll();
+//        model.addAttribute("replyList",replyList);
+
         return "board-read-one";
     }
 
