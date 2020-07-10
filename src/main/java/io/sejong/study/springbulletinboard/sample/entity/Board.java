@@ -17,8 +17,7 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long boardId; //private Long boardId
 
-    @OneToMany
-    @JoinColumn(name = "boardId")
+    @OneToMany(mappedBy = "board")
     private List<Reply> replies;
 
     @ManyToOne
@@ -34,8 +33,7 @@ public class Board {
 
     private String updated_at;
 
-    public Board(Long boardId, User user, String content, String title, String wrote_at) {
-        this.boardId = boardId;
+    public Board(User user, String content, String title, String wrote_at) {
         this.user = user;
         this.content = content;
         this.title = title;

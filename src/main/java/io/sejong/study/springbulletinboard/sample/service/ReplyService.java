@@ -29,14 +29,14 @@ public class ReplyService {
     return replyRepository.findAll();
   }
 
-  public Reply getOneByBoardId(Long replyId) {
+  public Reply getOneByReplyId(Long replyId) {
     return replyRepository.findByReplyId(replyId);
   }
 
   public Reply createReply(ReplyCreateRequest request) {
     Reply reply =
         new Reply(
-            request.getReplyId(),request.getUser(),request.getBoardId(), request.getReplyContent(),request.getWrote_at());
+            request.getReplyId(),request.getBoard(), request.getReplyContent(),request.getWrote_at());
 
     return replyRepository.save(reply);
   }

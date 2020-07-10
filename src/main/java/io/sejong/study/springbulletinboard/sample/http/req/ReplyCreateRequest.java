@@ -1,5 +1,6 @@
 package io.sejong.study.springbulletinboard.sample.http.req;
 
+import io.sejong.study.springbulletinboard.sample.entity.Board;
 import io.sejong.study.springbulletinboard.sample.entity.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ public class ReplyCreateRequest {
   Date time = new Date();
 
   private Long replyId;
-  private Long boardId;
+  private Board board;
   private User user;
   private String replyContent;
   private String wrote_at = format.format(time);

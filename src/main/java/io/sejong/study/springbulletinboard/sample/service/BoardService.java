@@ -8,6 +8,7 @@ import io.sejong.study.springbulletinboard.sample.http.req.SampleCreateRequest;
 import io.sejong.study.springbulletinboard.sample.http.req.SampleUpdateRequest;
 import io.sejong.study.springbulletinboard.sample.repository.BoardRepository;
 import io.sejong.study.springbulletinboard.sample.repository.SampleRepository;
+import org.hibernate.Hibernate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -32,14 +33,19 @@ public class BoardService {
     return boardRepository.findAll();
   }
 
+  @Transactional
   public Board getOneByBoardId(Long boardId) {
-    return boardRepository.findByBoardId(boardId);
+
+    Board board = boardRepository.findByBoardId(boardId);
+    Hibernate.initialize(board.getReplies());
+
+    return board;
   }
 
   public Board createBoard(BoardCreateRequest request) {
     Board board =
         new Board(
-            request.getBoardId(),request.getUser(), request.getContent(),request.getTitle(),request.getWrote_at());
+            request.getUser(), request.getContent(),request.getTitle(),request.getWrote_at());
 
     return boardRepository.save(board);
   }

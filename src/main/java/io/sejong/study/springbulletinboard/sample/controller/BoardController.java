@@ -60,8 +60,8 @@ public class BoardController {
         Board board = boardService.getOneByBoardId(boardId);
         model.addAttribute("board", board);
 
-        List<Reply> replyList = replyService.getAll();
-        model.addAttribute("replyList",replyList);
+//        List<Reply> replyList = replyService.getAll();
+//        model.addAttribute("replyList",replyList);
 
         return "board-read-one";
     }
