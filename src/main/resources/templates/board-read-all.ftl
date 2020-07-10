@@ -51,7 +51,7 @@
             <tr>
                 <td>${row.boardId}</td>
                 <td>
-                    <a href="http://localhost:8080/board/board-one?board_id=${row.boardId}">
+                    <a href="/board/board-one?board_id=${row.boardId}">
                         ${row.title}
                     </a>
                 </td>
