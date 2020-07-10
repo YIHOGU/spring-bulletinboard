@@ -3,6 +3,7 @@ package io.sejong.study.springbulletinboard.sample.controller;
 import io.sejong.study.springbulletinboard.sample.entity.Board;
 import io.sejong.study.springbulletinboard.sample.entity.Reply;
 import io.sejong.study.springbulletinboard.sample.http.req.ReplyCreateRequest;
+import io.sejong.study.springbulletinboard.sample.http.req.ReplyUpdateRequest;
 import io.sejong.study.springbulletinboard.sample.repository.BoardRepository;
 import io.sejong.study.springbulletinboard.sample.repository.ReplyRepository;
 import io.sejong.study.springbulletinboard.sample.service.BoardService;
@@ -40,6 +41,25 @@ public class ReplyController {
         Board board = reply.getBoard();
         model.addAttribute("board_id",board.getBoardId());
         replyService.deleteReply(replyId);
+
+        return "redirect:/board/board-one";
+    }
+
+    @RequestMapping("/updatereply")
+    public String controlReply(Model model, @RequestParam("reply_id") Long replyId) {
+        Reply reply = replyService.getOneByReplyId(replyId);
+        Board board = reply.getBoard();
+        model.addAttribute("board_id",board.getBoardId());
+        model.addAttribute("reply",reply);
+
+        return "reply-update";
+    }
+
+    @RequestMapping("/update/reply")
+    public String updateReply(Model model, @ModelAttribute ReplyUpdateRequest request) {
+        Reply reply = replyService.updateReply(request);
+        Board board = reply.getBoard();
+        model.addAttribute("board_id",board.getBoardId());
 
         return "redirect:/board/board-one";
     }

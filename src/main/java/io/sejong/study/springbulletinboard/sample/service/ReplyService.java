@@ -41,14 +41,12 @@ public class ReplyService {
     return replyRepository.save(reply);
   }
 
-/*  public Reply updateReply(ReplyUpdateRequest request) {
-    Reply reply = replyRepository.findByBoardId(request.getBoardId());
-    reply.setContent(request.getContent());
-    reply.setTitle(request.getTitle());
-    reply.setUpdated_at(request.getUpdated_at());
+  public Reply updateReply(ReplyUpdateRequest request) {
+    Reply reply = replyRepository.findByReplyId(request.getReplyId());
+    reply.setReplyContent(request.getReplyContent());
 
     return replyRepository.save(reply);
-  }*/
+  }
 
   public void deleteReply(Long replyId) {
     replyRepository.deleteById(replyId);

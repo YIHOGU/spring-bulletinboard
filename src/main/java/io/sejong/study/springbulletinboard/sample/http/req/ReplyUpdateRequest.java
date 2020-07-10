@@ -1,5 +1,6 @@
 package io.sejong.study.springbulletinboard.sample.http.req;
 
+import io.sejong.study.springbulletinboard.sample.entity.Board;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,11 +11,7 @@ import java.util.Date;
 @Setter
 public class ReplyUpdateRequest {
 
-  SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
-  Date time = new Date();
-
   private Long replyId;
-  private Long boardId;
+  private Board board;
   private String replyContent;
-  private String updated_at = format.format(time);
 }
