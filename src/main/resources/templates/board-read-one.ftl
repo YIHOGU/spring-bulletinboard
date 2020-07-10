@@ -6,6 +6,15 @@
     <title>단건조회</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        .table-dark{
+            text-align: center;
+            font-size: x-large;
+        }
+        button{
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
 <!--나중에 assign 써서 로그인 상태 확인 후 해당 버튼 등장하게 수정-->
@@ -20,34 +29,34 @@
     </form>
 </div>
 
-<div class="container">
-    <table border="1">
+<div class="container-fluid">
+    <table border="1" class="table">
         <tr>
-            <th id="boardid">글번호</th>
-            <td id="boardid2">${board.boardId}</td>
+            <th class="table-dark">글번호</th>
+            <td >${board.boardId}</td>
             <!--작성자가 NULL이면 에러나서 임시 조치 - session 처리시 삭제 -->
-            <th id="writer">작성자</th>
-            <td id="writer2">${board.name?default("-NO_NAME-")}</td>
-            <th id="date">날짜</th>
-            <td id="date2">${board.wrote_at}</td>
+            <th class="table-dark">작성자</th>
+            <td>${board.name?default("GUEST USER")}</td>
+            <th class="table-dark">날짜</th>
+            <td>${board.wrote_at}</td>
         </tr>
 
         <tr>
-            <th id="title">제목</th>
-            <td colspan="5" id="title22">${board.title}</td>
+            <th class="table-dark">제목</th>
+            <td colspan="5">${board.title}</td>
         </tr>
 
         <tr>
-            <th id="content">내용</th>
-            <td colspan="5" id="content2">${board.content}</td>
+            <th class="table-dark">내용</th>
+            <td colspan="5">${board.content}</td>
         </tr>
         <form method="POST" action="/reply/write">
             <tr>
-                <td>세션 본인 아이디 - ${board.boardId}</td>
+                <th class="table-dark">GUSET</th>
                 <td colspan="4">
 
                     <input type="hidden" name="board" value="${board.boardId}">
-                    <input type="text" name="replyContent">
+                    <input type="text" name="replyContent" size="100">
                 </td>
                 <td>
                     <button class="btn btn-success">댓글 입력</button>
@@ -55,12 +64,17 @@
             </tr>
         </form>
         <tr>
-            <th id="reply" colspan="6">댓글</th>
+            <th class="table-dark" colspan="6">댓글</th>
         </tr>
         <#list board.replies as row>
             <tr>
-                <td>${row.user_id?default("-NO_NAME-")}</td>
-                <td colspan="4">${row.replyContent?default("-NO-CONTENT-")}</td>
+                <th class="table-dark">${row.user_id?default("GUEST USER")}</th>
+                <td colspan="3">${row.replyContent?default("-NO-CONTENT-")}</td>
+                <td>
+                    <form method="post" action="/updatereply?reply_id=${row.replyId}">
+                        <button class="btn btn-warning">수정</button>
+                    </form>
+                </td>
                 <td>
                     <form method="post" action="/delete/reply?reply_id=${row.replyId}">
                         <input type="hidden" name="boardId" value="${board.boardId}">

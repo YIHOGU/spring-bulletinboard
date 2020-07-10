@@ -53,7 +53,7 @@ public class BoardService {
 //  @Transactional 영속성
   public Page<Board> getBoardList(Pageable pageable) {
     int page = (pageable.getPageNumber() == 0) ? 0 : (pageable.getPageNumber() - 1);
-    pageable = PageRequest.of(page, 5, Sort.by("boardId").descending());
+    pageable = PageRequest.of(page, 8, Sort.by("boardId").descending());
 
     return boardRepository.findAll(pageable);
   }
