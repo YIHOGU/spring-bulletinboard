@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.*;
 import lombok.*;
+import org.apache.tomcat.jni.Local;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -15,7 +16,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long boardId; //private Long boardId
+    private Long boardId;
 
     @OneToMany(mappedBy = "board")
     private List<Reply> replies;
@@ -27,13 +28,15 @@ public class Board {
     private String content;
     private String title;
 
-    //@WriteTimestamp
+    @CreationTimestamp
     @Column(nullable = false)
-    private String wrote_at;
+    private LocalDateTime wrote_at;
 
-    private String updated_at;
+    @UpdateTimestamp
+    @Column(nullable = false)
+    private LocalDateTime updated_at;
 
-    public Board(User user, String content, String title, String wrote_at) {
+    public Board(User user, String content, String title, LocalDateTime wrote_at) {
         this.user = user;
         this.content = content;
         this.title = title;

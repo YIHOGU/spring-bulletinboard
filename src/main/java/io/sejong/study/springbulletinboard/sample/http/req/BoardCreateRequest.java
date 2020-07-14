@@ -12,12 +12,9 @@ import java.util.Date;
 @Setter
 public class BoardCreateRequest {
 
-  SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
-  Date time = new Date();
-
   private Long boardId;
   private User user;
   private String content;
   private String title;
-  private String wrote_at = format.format(time);
+  private LocalDateTime wrote_at;
 }

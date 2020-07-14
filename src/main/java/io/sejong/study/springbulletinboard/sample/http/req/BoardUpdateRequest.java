@@ -10,12 +10,8 @@ import java.util.Date;
 @Getter
 @Setter
 public class BoardUpdateRequest {
-
-  SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
-  Date time = new Date();
-
   private Long boardId;
   private String content;
   private String title;
-  private String updated_at = format.format(time);
+  private LocalDateTime updated_at;
 }
