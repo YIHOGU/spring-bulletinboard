@@ -89,7 +89,7 @@
 
 <div class="btn-group" role="group">
     <form action="/board/back" class="actionButton">
-        <button class="btn btn-info">뒤로</button>
+        <button class="btn btn-info">목록</button>
     </form>
     <#assign updateAction="/board/write?type=UPDATE&board_id=${board.boardId}">
     <form method="POST" action="${updateAction}" class="actionButton">
