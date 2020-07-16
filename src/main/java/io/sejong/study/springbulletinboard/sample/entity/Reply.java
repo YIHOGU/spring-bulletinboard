@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -23,17 +25,16 @@ public class Reply {
     @JoinColumn(name="board_id")
     private Board board;
 
-/*    @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "userId")
-    private User user;*/
+    private User user;
 
-    //@WriteTimestamp
+    @CreationTimestamp
     @Column(nullable = false)
-    private String wrote_at;
+    private LocalDateTime wrote_at;
 
-    public Reply(Long replyId, Board board, String replyContent, String wrote_at) {
+    public Reply(Long replyId, Board board, String replyContent, LocalDateTime wrote_at) {
         this.replyId = replyId;
-//        this.user = user;
         this.board = board;
         this.replyContent = replyContent;
         this.wrote_at = wrote_at;
