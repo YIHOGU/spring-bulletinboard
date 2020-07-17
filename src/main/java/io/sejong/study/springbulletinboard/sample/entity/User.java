@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,17 +19,19 @@ public class User {
     private Long userId;
 
     private String name;
-/*
+
     @OneToMany(mappedBy = "user")
     private List<Board> boards;
-*/
+
+    @OneToMany(mappedBy = "user")
+    private List<Reply> replies;
 
     private String password;
 
     @Column(nullable = false)
-    private String created_at;
+    private LocalDateTime created_at;
 
-    public User(Long userId, String name, String password, String created_at) {
+    public User(Long userId, String name, String password, LocalDateTime created_at) {
         this.userId = userId;
         this.name = name;
         this.password = password;

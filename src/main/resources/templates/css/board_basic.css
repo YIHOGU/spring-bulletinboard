@@ -72,6 +72,7 @@
 
 .navigation-menu.active {
     transform: skewX(8deg) translate(0, 0);
+    background-color: yellow;
 }
 
 .navigation-menu li {
@@ -97,12 +98,11 @@
 .navigation-menu.active li:nth-child(3) {
     transition-delay: .5s;
 }
-/*
 .navigation-menu.active li:nth-child(4) {
     transition-delay: .6s;
 }
 
-.navigation-menu.active li:nth-child(5) {
+/*.navigation-menu.active li:nth-child(5) {
     transition-delay: .7s;
 }
 

@@ -2,6 +2,7 @@ package io.sejong.study.springbulletinboard.sample.http.req;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.tomcat.jni.Local;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -11,11 +12,8 @@ import java.util.Date;
 @Setter
 public class UserCreateRequest {
 
-  SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
-  Date time = new Date();
-
   private Long userId;
   private String name;
   private String password;
-  private String created_at = format.format(time);
+  private LocalDateTime created_at;
 }

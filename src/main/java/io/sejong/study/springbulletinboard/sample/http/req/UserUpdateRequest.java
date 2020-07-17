@@ -11,5 +11,5 @@ public class UserUpdateRequest {
   private Long userId;
   private String name;
   private String password;
-  private String created_at;
+  private LocalDateTime created_at;
 }

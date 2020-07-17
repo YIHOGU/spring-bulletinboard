@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class Reply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long replyId; //private Long boardId
+    private Long replyId;
 
     private String replyContent;
 
@@ -26,7 +26,7 @@ public class Reply {
     private Board board;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @CreationTimestamp
